@@ -312,11 +312,7 @@ class LoadScopeScheduling:
                 bracket_level += 1
             elif char == "]" and bracket_level:
                 bracket_level -= 1
-            elif (
-                char == ":"
-                and nodeid[index + 1] == ":"
-                and bracket_level == 0
-            ):
+            elif char == ":" and nodeid[index + 1] == ":" and bracket_level == 0:
                 split_at = index
 
         if split_at == -1:
