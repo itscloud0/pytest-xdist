@@ -261,7 +261,12 @@ class WorkerInteractor:
                     gnames.add(str(name))
                 if not gnames:
                     continue
-                item._nodeid = f"{item.nodeid}@{'_'.join(sorted(gnames))}"
+                nodeid = f"{item.nodeid}@{'_'.join(sorted(gnames))}"
+                node_id = getattr(item, "_id", None)
+                if node_id is None:
+                    item._nodeid = nodeid
+                else:
+                    item._id = node_id.parse(nodeid)
 
     @pytest.hookimpl
     def pytest_collection_finish(self, session: pytest.Session) -> None:
