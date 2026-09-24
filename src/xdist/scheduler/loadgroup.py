@@ -5,6 +5,7 @@ from collections.abc import Sequence
 import pytest
 
 from xdist.remote import Producer
+from xdist.workermanage import WorkerController
 
 from .loadscope import LoadScopeScheduling
 
